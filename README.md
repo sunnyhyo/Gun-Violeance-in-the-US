@@ -13,5 +13,4 @@
 
 - Variables
 
-  ![1542178155409](C:\Users\HS\AppData\Local\Temp\1542178155409.png)
-
+  ![variables image](C:\Users\HS\Documents\GitHub\Gun-Violeance-in-the-US\variables image.png)
