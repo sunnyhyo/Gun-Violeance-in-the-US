@@ -1,0 +1,32 @@
+---
+title: "Gun data"
+author: "Big data Graphics TEAM 1"
+date: "2018. 11. 04"
+output:
+  word_document: default
+---
+
+
+```{r include=FALSE}
+library("tidyverse")
+setwd("C:/Users/HS/Documents/GitHub/Gun-violence-in-the-US")
+gun.data <- read.csv("data/gun-violence-data.csv")
+gun <- tbl_df(gun.data)
+gun <- gun[, c(1:29)]
+```
+
+##gun data
+
+```{r}
+dim(gun)
+glimpse(gun)
+
+#state
+gun %>% count(state) %>% print(n = 51)
+#n_killed
+gun %>% count(n_killed)
+#n_injured
+gun %>% count(n_injured) %>% print(n = 23)
+
+```
+
