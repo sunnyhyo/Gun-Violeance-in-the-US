@@ -32,7 +32,7 @@ df2.1$status <- revalue(df2.1$status, replace = c("1" = "Arrested",
                                               "10" = "Killed, Arrested",
                                               "12" = "Unharmed",
                                               "13" = "Unharmed, Arrested"))
-df2.1$type <- revalue(df2.1$type, replace = c("1" = "Subject-Suspect", #Subject-Suspect
+df2.1$type <- revalue(df2.1$type, replace = c("1" = "Suspect", #Subject-Suspect
                                           "2" = "Victim")) #Victim
 dim(df2.1)
 
