@@ -34,13 +34,14 @@ df4 <- df4.data
 
 # join 
 # 
-# df1 %>% left_join(df3)
+# df1 %>% left_join(df3) 
 # df1 %>% full_join(df3)
 # 
-# df1 %>% left_join(df2)
+# df1 %>% left_join(df2) #%>% filter(is.na(pct_id))
 # df1 %>% full_join(df2)
 # 
 # df1 %>% left_join(df4)
 # df1 %>% full_join(df4)
 # 
 # df1 %>% left_join(df3) %>% left_join(df2)
+

@@ -71,7 +71,7 @@ df2.data <- df %>% filter(!is.na(pct_id))
 df2 <- df2.data
 
 write.csv(df2, "C:/Users/HS/Documents/GitHub/Gun-Violeance-in-the-US/data/DATA2.csv", row.names = FALSE)
-
+df2 <- read_csv("C:/Users/HS/Documents/GitHub/Gun-Violeance-in-the-US/data/DATA2.csv")
 
 
 #DATA3
@@ -168,7 +168,34 @@ part2.6 <- df2 %>% unite(y, status, type) %>%
   rename(n_Suspect_Unharmed = n)
 
 
+table(df2$status)
+table(df2$type)
 
+
+#
+df1 <- read_csv("C:/Users/HS/Documents/GitHub/Gun-Violeance-in-the-US/data/DATA1.csv")
+df2 <- read_csv("C:/Users/HS/Documents/GitHub/Gun-Violeance-in-the-US/data/DATA2.csv")
+df3 <- read_csv("C:/Users/HS/Documents/GitHub/Gun-Violeance-in-the-US/data/DATA3.csv")
+df4 <- read_csv("C:/Users/HS/Documents/GitHub/Gun-Violeance-in-the-US/data/DATA4.csv")
+
+part3.1 <- df2 %>% unite(y, type, age_group) %>% 
+  mutate(y = str_replace(y, "Subject-Suspect_Adult", "1"),
+         y = str_replace(y, "Subject-Suspect_Child", "2"),
+         y = str_replace(y, "Subject-Suspect_Teen", "3"),
+         y = str_replace(y, "Subject-Suspect_NA", "4"),
+         y = str_replace(y, "Victim_Adult", "5"),
+         y = str_replace(y, "Victim_Child", "6"),
+         y = str_replace(y, "Victim_Teen", "7"),
+         y = str_replace(y, "Victim_NA", "8")) %>% 
+  count(incident_id, wt = (y==1)) %>% 
+  rename(n_Suspect_Female = n)
+
+df3 %>% count(n_participant) %>% print(n=40)
+df3 %>% count(n_Teen)
+df3 %>% count(n_Child)
+df3 %>% filter(n_Child ==11)
+
+df4 %>% filter(incident_id ==980577)
 
 # join
 
@@ -196,7 +223,7 @@ names(DATA3)
 getwd()
 write.csv(DATA3, "C:/Users/HS/Documents/GitHub/Gun-Violeance-in-the-US/data/DATA3.csv", row.names = FALSE)
 
-
+################################
 #DATA1
 
 df111 <- read_csv("C:/Users/HS/Documents/GitHub/Gun-violence-in-the-US/data/DATA1_main.csv")
@@ -204,9 +231,18 @@ df111 <- df111 %>% arrange(incident_id)
 write.csv(df111, "C:/Users/HS/Documents/GitHub/Gun-Violeance-in-the-US/data/DATA1.csv", row.names = FALSE)
 
 
-
 #DATA4
 
 df444 <- read_csv("C:/Users/HS/Documents/GitHub/Gun-violence-in-the-US/data/DATA4_character.csv")
 df444 <- df444 %>% arrange(incident_id)
 write.csv(df444, "C:/Users/HS/Documents/GitHub/Gun-Violeance-in-the-US/data/DATA4.csv", row.names = FALSE)
+
+
+#DATA3
+
+df333 <- read_csv("C:/Users/HS/Documents/GitHub/Gun-Violeance-in-the-US/data/DATA3.csv")
+names(df333)
+View(df333)
+df333 %>% count(n_participant) %>% print(n=30)
+df333 %>% count(n_Adult) %>% filter(is.na(n_Adult))
+table(ifelse(is.na(df333$n_Child), 0, df333$n_Child))
