@@ -16,6 +16,7 @@ df1.data <- read_csv("data/DATA1.csv")
 df2.data <- read_csv("data/DATA2.csv")
 df3.data <- read_csv("data/DATA3.csv")
 df4.data <- read_csv("data/DATA4.csv")
+code.data <- read_csv("data/UScode.csv")
 
 # 원자료 복사 
 # 복사된 데이터셋만 수정해서 분석해부세요
@@ -23,7 +24,7 @@ df1 <- df1.data
 df2 <- df2.data
 df3 <- df3.data
 df4 <- df4.data
-
+code <- code.data
 
 ## 참고 ##
 # key 확인
